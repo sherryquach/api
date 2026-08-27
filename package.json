@@ -1,0 +1,17 @@
+{
+  "name": "knowi-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "node --check server/app.mjs",
+    "start": "node server/app.mjs"
+  },
+  "dependencies": {
+    "express": "5.1.0",
+    "pg": "8.16.3"
+  }
+}
