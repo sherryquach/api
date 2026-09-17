@@ -1,1 +1,1 @@
-{"v":2,"service":"server/app.mjs","bindings":[{"key":"gsc","type":"dashboard","id":212772},{"key":"gsc-new","type":"data","id":178618}]}
+{"v":2,"service":"server/app.mjs","bindings":[{"key":"new-gsc","type":"data","id":178877}],"branding":{"name":"Rankwatch","colors":{"background":"#f6f3ec","surface":"#ffffff","text":"#0f1b1a","muted":"#4b5450","border":"#b7ae95","button":"#0f1b1a","buttonText":"#f6f3ec"}}}

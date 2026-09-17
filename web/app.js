@@ -130,7 +130,7 @@ function groupByQuery(rows) {
       if (firstHalf.length && secondHalf.length) {
         const a = firstHalf.reduce((s, v) => s + v, 0) / firstHalf.length;
         const b = secondHalf.reduce((s, v) => s + v, 0) / secondHalf.length;
-        trendDelta = a - b; // positive means position improved (lower number is better)
+        trendDelta = a - b;
         trend = trendDelta > 0.3 ? 'up' : trendDelta < -0.3 ? 'down' : 'flat';
       }
     }
@@ -150,7 +150,6 @@ function groupByQuery(rows) {
 }
 
 function scorePriority(kw) {
-  // High opportunity: page 2-3 position, decent impressions, room for CTR growth
   let score = 0;
   if (kw.position !== null) {
     if (kw.position >= 8 && kw.position <= 20) score += 40;
@@ -187,7 +186,6 @@ function priorityReason(kw) {
 function buildAdvice(keywords) {
   const advice = [];
   const declining = keywords.filter(k => k.trend === 'down');
-  const risingImpr = keywords.filter(k => k.trend === 'up');
   const lowCtrHighPos = keywords.filter(k => k.position !== null && k.position <= 10 && k.ctr !== null && k.impressions > 50 && k.ctr < 0.06);
   const nearPageOne = keywords.filter(k => k.position !== null && k.position > 10 && k.position <= 20);
 
@@ -269,7 +267,6 @@ function renderChartSvg(series, activeMetrics) {
   const n = series.length;
   const xFor = i => padL + (n === 1 ? plotW / 2 : (i / (n - 1)) * plotW);
 
-  // gridlines
   for (let i = 0; i <= 4; i++) {
     const y = padT + (plotH / 4) * i;
     svgParts.push(`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${width - padR}" y2="${y.toFixed(1)}" stroke="#d8d1bf" stroke-width="1" />`);
@@ -280,7 +277,7 @@ function renderChartSvg(series, activeMetrics) {
     if (!values.length) return;
     let min = Math.min(...values);
     let max = Math.max(...values);
-    if (metric === 'position') { const t = min; min = max; max = t; } // invert so lower position (better) is higher on chart
+    if (metric === 'position') { const t = min; min = max; max = t; }
     if (min === max) { min -= 1; max += 1; }
 
     const yFor = v => {
@@ -304,7 +301,6 @@ function renderChartSvg(series, activeMetrics) {
     });
   });
 
-  // x-axis labels (sparse)
   const labelEvery = Math.max(1, Math.ceil(n / 6));
   series.forEach((s, i) => {
     if (i % labelEvery !== 0 && i !== n - 1) return;
@@ -533,7 +529,7 @@ function render() {
         </div>
         <div class="session-banner">
           ${iconSvg('alert')}
-          <span>Your session has ended. <a href="login">Sign in again</a> to keep viewing your rankings.</span>
+          <span>Something interrupted this view. Reload the page to reconnect.</span>
         </div>
       </div>`;
     return;

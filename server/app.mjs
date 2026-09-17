@@ -32,7 +32,7 @@ async function invoke(req, capability, input) {
 app.get('/api/keywords', async (req, res) => {
   try {
     const result = await invoke(req, 'data.query', {
-      binding: 'gsc-new',
+      binding: 'new-gsc',
       limit: 20000,
       fields: ['clicks', 'ctr', 'date', 'impressions', 'page', 'position', 'query', '_stream_time'],
       sort: [{ field: 'date', direction: 'desc' }],
@@ -43,13 +43,8 @@ app.get('/api/keywords', async (req, res) => {
   }
 });
 
-app.get('/api/dashboard', async (req, res) => {
-  try {
-    const result = await invoke(req, 'dashboard.embed', { binding: 'gsc' });
-    res.json({ url: result.url, expiresAt: result.expiresAt });
-  } catch (err) {
-    res.status(502).json({ error: 'Could not load the dashboard right now.' });
-  }
+app.get('/api/dashboard', (req, res) => {
+  res.status(501).json({ error: 'A Search Console dashboard is not configured for this app yet.' });
 });
 
 app.use(express.static(webRoot));

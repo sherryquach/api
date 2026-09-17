@@ -1,4 +1,4 @@
-﻿id,sent,message_type,customer,date,week,opened,spam,bounced,delivered,clicks,conversions,campaign_name
+id,sent,message_type,customer,date,week,opened,spam,bounced,delivered,clicks,conversions,campaign_name
 556a882c97a0b51431b796b4,107287,Transactional,Costco,"01/03/2015 00:00:00","01/01/2015 00:00:00",17696,175,4220,95587,4216,862,Newsletter
 556a882c97a0b51431b796f8,118038,Transactional,Costco,"01/10/2015 00:00:00","01/08/2015 00:00:00",19518,199,4641,113714,4821,1005,Trial
 556a882c97a0b51431b796bc,586661,Marketing,Costco,"01/04/2015 00:00:00","01/01/2015 00:00:00",95846,961,23039,556969,23436,4686,"More artists, more music"
